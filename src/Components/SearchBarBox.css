@@ -1,0 +1,58 @@
+.input-wrapper {
+  background-color: #2B3743;
+  width: 30rem;
+  height: 3rem;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+}
+
+nav:focus {
+  outline: none;
+}
+
+.results-list {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.results-list .result-item {
+  display: flex;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Assuming bg-Navbar is a dark color, e.g., #333 */
+.bg-Navbar .result-item:hover,
+.bg-Navbar .result-item.active {
+  background-color: #3C4A57;
+  /* Lighter shade of the dark color */
+}
+
+/* For bg-customary-lg which is white */
+.bg-customary-lg .result-item:hover,
+.bg-customary-lg .result-item.active {
+  background-color: #f0f0f0;
+  /* Light gray */
+}
+
+/* General styles for result items */

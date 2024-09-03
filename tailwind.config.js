@@ -25,7 +25,8 @@ export default {
       colors: {
         "custom-bg": "#202D36",
         "customary-bg": "#FAFAFA",
-        "customary-lg": "#FFFFFF"
+        "customary-lg": "#FFFFFF",
+        "Navbar": "#2B3743"
       },
     },
   },

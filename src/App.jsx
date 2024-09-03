@@ -1,23 +1,36 @@
 import React, { useContext } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import { ThemeProvider, ThemeContext } from "./Components/Context/Themecontext";
 import Body from "./Components/Body";
-function App() {
+import DescriptivePage from "./Components/DescriptivePage"; // Import your new page component
+import data from "../public/data.json"; // Import your JSON data
+
+const App = () => {
   return (
     <ThemeProvider>
-      <Content />
+      <Router>
+        <MainContent />
+      </Router>
     </ThemeProvider>
   );
-}
+};
 
-const Content = () => {
-  // Use the useContext hook to access darkMode and toggleTheme from ThemeContext
+const MainContent = () => {
   const { darkMode } = useContext(ThemeContext);
 
+  const showNavbar = true;
+
   return (
-    <div>
-      <Navbar />
-      <Body />
+    <div className={darkMode ? "dark-mode" : "light-mode"}>
+      {showNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Body />} />
+        <Route
+          path="/country/:countryName"
+          element={<DescriptivePage data={data} />}
+        />
+      </Routes>
     </div>
   );
 };
