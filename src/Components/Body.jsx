@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import SearchBarBox from "../Components/SearchBarBox";
 import FilterBox from "../Components/FilterBox";
@@ -12,7 +12,7 @@ const Body = () => {
   const [loading, setLoading] = useState(true); // Add loading state
 
   // Simulate data fetching with useEffect
-  React.useEffect(() => {
+  useEffect(() => {
     // Mock a data fetching delay
     setTimeout(() => {
       setLoading(false); // Set loading to false once data is "fetched"
