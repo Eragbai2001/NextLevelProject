@@ -2,13 +2,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/NextLevelReact/",
   plugins: [react()],
-  root: "./",
+  root: "./", // Root directory for your project
   build: {
-    outDir: "dist",
+    outDir: "dist", // Output directory for the build
   },
   server: {
-    open: true,
+    open: true, // Automatically open the app in the browser during local development
   },
 });
