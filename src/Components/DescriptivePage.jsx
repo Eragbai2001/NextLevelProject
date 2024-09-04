@@ -2,25 +2,31 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import HashLoader from "react-spinners/HashLoader"; // Import HashLoader
-import data from "../data.json"; // Import data directly from src
 
 const DescriptivePage = () => {
   const { countryName } = useParams();
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [country, setCountry] = useState(null);
   const { darkMode } = useContext(ThemeContext);
 
   // Fetch data on mount
   useEffect(() => {
-    setLoading(true);
-    const foundCountry = data.find(
-      (item) => item.name === decodeURIComponent(countryName)
-    );
-    if (foundCountry) {
-      setCountry(foundCountry);
-    }
-    setLoading(false);
-  }, [countryName]);
+    fetch("/data.json") // Adjusted URL if needed
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
   // Show spinner while loading
   if (loading) {
@@ -30,6 +36,11 @@ const DescriptivePage = () => {
       </div>
     );
   }
+
+  // Find the country by name
+  const country = data.find(
+    (item) => item.name === decodeURIComponent(countryName)
+  );
 
   // If country is not found
   if (!country) {

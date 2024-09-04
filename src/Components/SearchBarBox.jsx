@@ -3,7 +3,6 @@ import { Search } from "lucide-react";
 import "./SearchBarBox.css";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import { useNavigate } from "react-router-dom";
-import data from "../data.json"; // Import data directly from src
 
 const SearchBarBox = ({
   setResults,
@@ -16,17 +15,28 @@ const SearchBarBox = ({
   const navigate = useNavigate(); // Use navigate for routing
 
   const fetchData = (value) => {
-    // Filter data directly from the imported JSON
-    const results = data.filter((user) => {
-      return (
-        value &&
-        user &&
-        user.name &&
-        user.name.toLowerCase().includes(value.toLowerCase())
-      );
-    });
-    setResults(results);
-    setSelectedItem(-1); // Reset selected item when new results are fetched
+    fetch("/data.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((json) => {
+        const results = json.filter((user) => {
+          return (
+            value &&
+            user &&
+            user.name &&
+            user.name.toLowerCase().includes(value.toLowerCase())
+          );
+        });
+        setResults(results);
+        setSelectedItem(-1); // Reset selected item when new results are fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
 
   const handleChange = (value) => {
