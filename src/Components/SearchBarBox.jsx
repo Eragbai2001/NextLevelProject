@@ -12,7 +12,7 @@ const SearchBarBox = ({
 }) => {
   const { darkMode } = useContext(ThemeContext);
   const [input, setInput] = useState("");
-  const navigate = useNavigate(); // Use navigate for routing
+  const navigate = useNavigate();
 
   const fetchData = (value) => {
     fetch("/data.json")
@@ -32,7 +32,7 @@ const SearchBarBox = ({
           );
         });
         setResults(results);
-        setSelectedItem(-1); // Reset selected item when new results are fetched
+        setSelectedItem(-1);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -46,14 +46,13 @@ const SearchBarBox = ({
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowUp") {
-      e.preventDefault(); // Prevent default behavior like moving the cursor
+      e.preventDefault();
       setSelectedItem((prev) => Math.max(prev - 1, 0));
     } else if (e.key === "ArrowDown") {
-      e.preventDefault(); // Prevent default behavior like moving the cursor
+      e.preventDefault();
       setSelectedItem((prev) => Math.min(prev + 1, results.length - 1));
     } else if (e.key === "Enter" && selectedItem >= 0) {
-      e.preventDefault(); // Prevent default form submission or other behavior
-      // Perform the action for the selected item
+      e.preventDefault();
       navigate(`/country/${encodeURIComponent(results[selectedItem].name)}`, {
         state: { result: results[selectedItem] },
       });
@@ -71,7 +70,7 @@ const SearchBarBox = ({
         className="ml-5"
         value={input}
         onChange={(e) => handleChange(e.target.value)}
-        onKeyDown={handleKeyDown} // Attach the onKeyDown handler here
+        onKeyDown={handleKeyDown}
       />
     </div>
   );

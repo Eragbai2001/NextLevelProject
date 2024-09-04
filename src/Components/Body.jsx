@@ -3,21 +3,19 @@ import { ThemeContext } from "../Components/Context/Themecontext";
 import SearchBarBox from "../Components/SearchBarBox";
 import FilterBox from "../Components/FilterBox";
 import SearchResult from "../Components/SearchResult";
-import HashLoader from "react-spinners/HashLoader"; // Import HashLoader
+import HashLoader from "react-spinners/HashLoader";
 
 const Body = () => {
   const { darkMode } = useContext(ThemeContext);
   const [results, setResults] = useState([]);
   const [selectedItem, setSelectedItem] = useState(-1);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
-  // Simulate data fetching with useEffect
   useEffect(() => {
     console.log("Loading started");
-    // Mock a data fetching delay
     setTimeout(() => {
       console.log("Loading finished");
-      setLoading(false); // Set loading to false once data is "fetched"
+      setLoading(false);
     }, 1000);
   }, []);
 

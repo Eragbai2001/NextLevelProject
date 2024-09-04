@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ThemeContext } from "../Components/Context/Themecontext";
-import HashLoader from "react-spinners/HashLoader"; // Import HashLoader
+import HashLoader from "react-spinners/HashLoader";
 
 const DescriptivePage = () => {
   const { countryName } = useParams();
@@ -9,9 +9,8 @@ const DescriptivePage = () => {
   const [loading, setLoading] = useState(true);
   const { darkMode } = useContext(ThemeContext);
 
-  // Fetch data on mount
   useEffect(() => {
-    fetch("/data.json") // Adjusted URL if needed
+    fetch("/data.json")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -28,7 +27,6 @@ const DescriptivePage = () => {
       });
   }, []);
 
-  // Show spinner while loading
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -37,17 +35,14 @@ const DescriptivePage = () => {
     );
   }
 
-  // Find the country by name
   const country = data.find(
     (item) => item.name === decodeURIComponent(countryName)
   );
 
-  // If country is not found
   if (!country) {
     return <div>Country not found</div>;
   }
 
-  // Render country details
   return (
     <div
       className={`${
@@ -60,7 +55,6 @@ const DescriptivePage = () => {
       <p>Population: {country.population}</p>
       <p>Area: {country.area} km²</p>
       <img src={country.flags.svg} alt={`Flag of ${country.name}`} />
-      {/* Add more details as needed */}
     </div>
   );
 };

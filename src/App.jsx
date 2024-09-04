@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import { ThemeProvider, ThemeContext } from "./Components/Context/Themecontext";
 import Body from "./Components/Body";
-import DescriptivePage from "./Components/DescriptivePage"; // Import your new page component
+import DescriptivePage from "./Components/DescriptivePage";
 
 const App = () => {
   return (
