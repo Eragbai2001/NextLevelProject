@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import { ThemeProvider, ThemeContext } from "./Components/Context/Themecontext";
 import Body from "./Components/Body";
 import DescriptivePage from "./Components/DescriptivePage"; // Import your new page component
-import data from "../public/data.json"; // Import your JSON data
+import data from "./data.json";
 
 const App = () => {
   return (

@@ -13,16 +13,18 @@ const Body = () => {
 
   // Simulate data fetching with useEffect
   useEffect(() => {
+    console.log("Loading started");
     // Mock a data fetching delay
     setTimeout(() => {
+      console.log("Loading finished");
       setLoading(false); // Set loading to false once data is "fetched"
-    }, 2000);
+    }, 1000);
   }, []);
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <HashLoader color={darkMode ? "#000000" : "#ffffff"} loading={loading} size={150} />
+        <HashLoader color={"black"} loading={loading} size={150} />
       </div>
     );
   }
@@ -31,8 +33,7 @@ const Body = () => {
     <div
       className={`${
         darkMode ? "bg-customary-bg text-black" : "bg-custom-bg text-white"
-      } h-screen relative`}
-    >
+      } h-screen relative`}>
       <div className="flex justify-between items-center h-28 px-10p mt-20">
         <SearchBarBox
           setResults={setResults}

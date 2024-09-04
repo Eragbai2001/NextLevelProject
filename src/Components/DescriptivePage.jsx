@@ -32,13 +32,15 @@ const DescriptivePage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <HashLoader color={darkMode ? "#000000" : "#ffffff"} loading={loading} size={150} />
+        <HashLoader color={"white"} loading={loading} size={150} />
       </div>
     );
   }
 
   // Find the country by name
-  const country = data.find((item) => item.name === decodeURIComponent(countryName));
+  const country = data.find(
+    (item) => item.name === decodeURIComponent(countryName)
+  );
 
   // If country is not found
   if (!country) {
@@ -50,8 +52,7 @@ const DescriptivePage = () => {
     <div
       className={`${
         darkMode ? "bg-customary-bg text-black" : "bg-custom-bg text-white"
-      } mt-20 h-screen`}
-    >
+      } mt-20 h-screen`}>
       <h1>{country.name}</h1>
       <p>Capital: {country.capital}</p>
       <p>Region: {country.region}</p>
