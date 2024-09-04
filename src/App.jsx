@@ -25,7 +25,7 @@ const MainContent = () => {
       {showNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Body />} />
-        <Route path="/country/:countryName" element={<DescriptivePage />} />
+       
       </Routes>
     </div>
   );
