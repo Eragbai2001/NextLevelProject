@@ -1,15 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  root: "./", // Root directory for your project
   build: {
-    outDir: 'dist',
+    outDir: "dist", // Output directory for the build
   },
   server: {
-    open: true,
+    open: true, // Automatically open the app in the browser during local development
   },
-})
+});
