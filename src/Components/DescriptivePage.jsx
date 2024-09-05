@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import HashLoader from "react-spinners/HashLoader";
+import { MoveLeft } from "lucide-react";
 
 const DescriptivePage = () => {
   const { countryName } = useParams();
@@ -47,7 +48,11 @@ const DescriptivePage = () => {
     <div
       className={`${
         darkMode ? "bg-customary-bg text-black" : "bg-custom-bg text-white"
-      } mt-20 h-screen`}>
+      } mt-20 h-screen px-10p`}>
+      <Link to="/" className="text-3xl flex ">
+        <MoveLeft />
+        Back
+      </Link>
       <h1>{country.name}</h1>
       <p>Capital: {country.capital}</p>
       <p>Region: {country.region}</p>

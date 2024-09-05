@@ -51,11 +51,16 @@ const SearchBarBox = ({
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelectedItem((prev) => Math.min(prev + 1, results.length - 1));
-    } else if (e.key === "Enter" && selectedItem >= 0) {
+    } else if (e.key === "Enter") {
       e.preventDefault();
-      navigate(`/country/${encodeURIComponent(results[selectedItem].name)}`, {
-        state: { result: results[selectedItem] },
-      });
+      if (selectedItem >= 0) {
+        navigate(`/country/${encodeURIComponent(results[selectedItem].name)}`, {
+          state: { result: results[selectedItem] },
+        });
+      } else if (input) {
+        // Navigate directly if input is provided but no result selected
+        navigate(`/country/${encodeURIComponent(input)}`);
+      }
     }
   };
 
