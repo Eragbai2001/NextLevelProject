@@ -26,7 +26,8 @@ export default {
         "custom-bg": "#202D36",
         "customary-bg": "#FAFAFA",
         "customary-lg": "#FFFFFF",
-        "Navbar": "#2B3743"
+        "Navbar": "#2B3743",
+        "customary-text": "#2B3743",
       },
     },
   },

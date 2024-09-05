@@ -58,8 +58,15 @@ const SearchBarBox = ({
           state: { result: results[selectedItem] },
         });
       } else if (input) {
-        // Navigate directly if input is provided but no result selected
-        navigate(`/country/${encodeURIComponent(input)}`);
+        const matchedResult = results.find(
+          (result) => result.name.toLowerCase() === input.toLowerCase()
+        );
+        if (matchedResult) {
+          navigate(`/country/${encodeURIComponent(matchedResult.name)}`, {
+            state: { result: matchedResult },
+          });
+        } else {
+        }
       }
     }
   };

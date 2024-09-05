@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import { ThemeProvider, ThemeContext } from "./Components/Context/Themecontext";
 import Body from "./Components/Body";
 import DescriptivePage from "./Components/DescriptivePage";
+import NotFoundPage from "./Components/NotFoundPage"; 
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const MainContent = () => {
       <Routes>
         <Route path="/" element={<Body />} />
         <Route path="/country/:countryName" element={<DescriptivePage />} />
+        <Route path="*" element={<NotFoundPage />} /> {/* Fallback route */}
       </Routes>
     </div>
   );
