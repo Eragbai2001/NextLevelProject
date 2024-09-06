@@ -10,23 +10,23 @@ export default {
         "2xl": { max: "1535px" },
         // => @media (max-width: 1535px) { ... }
 
-        xl: { max: "1279px" },
+        xl: { max: "1366px" },
         // => @media (max-width: 1279px) { ... }
 
         lg: { max: "1115px" },
         // => @media (max-width: 1023px) { ... }
 
-        md: { min: "639px" },
+        md: { max: "414px" },
         // => @media (max-width: 767px) { ... }
 
-        sm: { max: "639px" },
+        sm: { max: "473px" },
         // => @media (max-width: 639px) { ... }
       },
       colors: {
         "custom-bg": "#202D36",
         "customary-bg": "#FAFAFA",
         "customary-lg": "#FFFFFF",
-        "Navbar": "#2B3743",
+        Navbar: "#2B3743",
         "customary-text": "#2B3743",
       },
     },

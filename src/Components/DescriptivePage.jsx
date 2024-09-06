@@ -3,13 +3,14 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import HashLoader from "react-spinners/HashLoader";
 import { MoveLeft } from "lucide-react";
+import StyledText from "../Components/Styletext"; // Import the new component
 
 const DescriptivePage = () => {
   const { countryName } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { darkMode } = useContext(ThemeContext);
-  const navigate = useNavigate(); // Use useNavigate for programmatic navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/data.json")
@@ -46,13 +47,11 @@ const DescriptivePage = () => {
   }
 
   const handleClick = (borderCode) => {
-    // Find the country that matches the border code (e.g., "USA" => "United States")
     const borderCountry = data.find(
       (country) => country.alpha3Code === borderCode
-    ); // assuming alpha3Code is the country code in your data
+    );
 
     if (borderCountry) {
-      // Redirect to the new country's page using its name
       navigate(`/country/${encodeURIComponent(borderCountry.name)}`);
     }
   };
@@ -61,7 +60,7 @@ const DescriptivePage = () => {
     <div
       className={`${
         darkMode ? "bg-customary-lg text-black" : "bg-customary-text text-white"
-      } pt-40 h-screen px-10`}>
+      } pt-40 h-screen px-10p w-screen`}>
       <Link
         to="/"
         className={`${
@@ -70,42 +69,86 @@ const DescriptivePage = () => {
         <MoveLeft className="mr-2" />
         Back
       </Link>
-      <h1>{country.name}</h1>
-      <p>Native Name: {country.nativeName}</p>
-      <p>Top Level Domain: {country.topLevelDomain}</p>
-      <p>
-        Currencies:{" "}
-        {country.currencies.map((currency) => currency.name).join(", ")}
-      </p>
-      <p>
-        Languages:{" "}
-        {country.languages.map((language) => language.name).join(", ")}
-      </p>
 
-      {/* Render the borders and navigate to the country page on click */}
-      {country.borders && country.borders.length > 0 ? (
-        country.borders.map((border, index) => (
-          <div
-            key={index}
-            onClick={() => handleClick(border)}
-            className={`${
-              darkMode
-                ? "bg-customary-bg text-black"
-                : "bg-custom-bg text-white"
-            } text-1xl flex items-center justify-center w-36 py-2 rounded-md shadow-xl m-2 cursor-pointer`}>
-            {border}
+      <div className="grid grid-cols-2 mt-10 xl:grid-cols-1 ">
+        <div className="flex flex-col items-left ">
+          <div>
+            <img
+              src={country.flags.svg}
+              alt={`Flag of ${country.name}`}
+              className="shadow-xl max-w-xl h-96 lg:h-72  sm:max-w-xs md:h-44"
+            />
           </div>
-        ))
-      ) : (
-        <p>No borders available</p>
-      )}
-
-      <p>Capital: {country.capital}</p>
-      <p>Region: {country.region}</p>
-      <p>Subregion: {country.subregion}</p>
-      <p>Population: {country.population}</p>
-      <p>Area: {country.area} km²</p>
-      <img src={country.flags.svg} alt={`Flag of ${country.name}`} />
+        </div>
+        <div>
+          <div className="flex flex-col mt-10">
+            <div className="grid grid-cols-2 items-center gap-40 lg:grid-cols-1 lg:gap-0  ">
+              <div className="flex flex-col">
+                <h1 className="text-4xl  ">{country.name}</h1>
+                <p className="mt-2">
+                  Native Name: <StyledText>{country.nativeName}</StyledText>
+                </p>
+                <p>
+                  Population:{" "}
+                  <StyledText>{country.population.toLocaleString()}</StyledText>
+                </p>
+                <p>
+                  Region: <StyledText>{country.region}</StyledText>
+                </p>
+                <p>
+                  Subregion: <StyledText>{country.subregion}</StyledText>
+                </p>
+                <p>
+                  Capital: <StyledText>{country.capital}</StyledText>
+                </p>
+              </div>
+              <div className="flex flex-col lg:mt-5">
+                <div>
+                  <p className="mt-2">
+                    Top Level Domain:{" "}
+                    <StyledText>{country.topLevelDomain}</StyledText>
+                  </p>
+                  <p>
+                    Currencies:{" "}
+                    <StyledText>
+                      {country.currencies
+                        .map((currency) => currency.name)
+                        .join(", ")}
+                    </StyledText>
+                  </p>
+                  <p>
+                    Languages:{" "}
+                    <StyledText>
+                      {country.languages
+                        .map((language) => language.name)
+                        .join(", ")}
+                    </StyledText>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center mt-7">
+              Border Countries:
+              {country.borders && country.borders.length > 0 ? (
+                country.borders.slice(0, 3).map((border, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handleClick(border)}
+                    className={`${
+                      darkMode
+                        ? "bg-customary-bg text-black"
+                        : "bg-custom-bg text-white"
+                    } text-1xl flex items-center justify-center w-36 py-2 rounded-md shadow-xl m-2 cursor-pointer`}>
+                    {border}
+                  </div>
+                ))
+              ) : (
+                <p>No borders available</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
