@@ -33,7 +33,11 @@ const DescriptivePage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <HashLoader color={"white"} loading={loading} size={150} />
+        <HashLoader
+          color={darkMode ? "white" : "black"}
+          loading={loading}
+          size={150}
+        />
       </div>
     );
   }
