@@ -33,8 +33,7 @@ const DescriptivePage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-       <HashLoader color={darkMode ? "white" : "black"} loading={loading} size={150} />
-
+        <HashLoader color={"black"} loading={loading} size={150} />
       </div>
     );
   }
@@ -77,7 +76,7 @@ const DescriptivePage = () => {
             <img
               src={country.flags.svg}
               alt={`Flag of ${country.name}`}
-              className="shadow-xl max-w-xl h-96 lg:h-72  sm:max-w-xs md:h-44"
+              className="shadow-xl max-w-xl h-96 lg:h-72  sm:max-w-xs md:h-"
             />
           </div>
         </div>
