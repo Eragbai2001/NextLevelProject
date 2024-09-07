@@ -6,8 +6,11 @@ export default {
       padding: {
         "10p": "7%",
       },
+      width: {
+        lw: "40rem",
+      },
       screens: {
-        "2xl": { max: "1535px" },
+        "2xl": { min: "1366px" },
         // => @media (max-width: 1535px) { ... }
 
         xl: { max: "1366px" },

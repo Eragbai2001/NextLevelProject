@@ -70,13 +70,13 @@ const DescriptivePage = () => {
         Back
       </Link>
 
-      <div className="grid grid-cols-2 mt-10 xl:grid-cols-1 ">
+      <div className="grid grid-cols-2 mt-10 xl:grid-cols-1">
         <div className="flex flex-col items-left ">
           <div>
             <img
               src={country.flags.svg}
               alt={`Flag of ${country.name}`}
-              className="max-w-xl h-96 lg:h-72 sm:max-w-xs"
+              className=" 2xl:w-lw h-96 lg:h-72 shadow"
             />
           </div>
         </div>
