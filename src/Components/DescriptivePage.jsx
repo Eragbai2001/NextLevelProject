@@ -60,7 +60,7 @@ const DescriptivePage = () => {
     <div
       className={`${
         darkMode ? "bg-customary-lg text-black" : "bg-customary-text text-white"
-      } pt-40 h-screen px-10p w-screen`}>
+      } pt-40  min-h-screen px-10p `}>
       <Link
         to="/"
         className={`${
@@ -76,7 +76,7 @@ const DescriptivePage = () => {
             <img
               src={country.flags.svg}
               alt={`Flag of ${country.name}`}
-              className="shadow-xl max-w-xl h-96 lg:h-72  sm:max-w-xs md:h-"
+              className="max-w-xl h-96 lg:h-72 sm:max-w-xs"
             />
           </div>
         </div>
