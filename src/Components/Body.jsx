@@ -39,7 +39,7 @@ const Body = () => {
           results={results}
           selectedItem={selectedItem}
         />
-        <FilterBox />
+        <FilterBox darkMode={darkMode} />
       </div>
 
       <div className="absolute px-10p z-30">

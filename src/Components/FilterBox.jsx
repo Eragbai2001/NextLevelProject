@@ -1,9 +1,90 @@
-import React from 'react'
+import React from "react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
-const FilterBox = () => {
+const FilterBox = ({ darkMode }) => {
   return (
-    <div>FilterBox</div>
-  )
-}
+    <Menu as="div" className="relative inline-block text-left">
+      <div>
+        <MenuButton
+          className={`inline-flex w-56 justify-center gap-x-16 rounded-md px-0 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset  ${
+            darkMode
+              ? "bg-customary-bg text-black ring-gray-300"
+              : "bg-custom-bg text-white ring-gray-300"
+          }`}>
+          Filter By Region
+          <ChevronDownIcon
+            aria-hidden="true"
+            className="-mr-1 h-5 w-5 text-gray-400"
+          />
+        </MenuButton>
+      </div>
 
-export default FilterBox
+      <MenuItems
+        transition
+        className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md shadow-xl  transition focus:outline-none ${
+          darkMode ? "bg-customary-bg ring-black" : "bg-custom-bg text-white"
+        }`}>
+        <div className="py-1">
+          <MenuItem>
+            {({ active }) => (
+              <a
+                href="#"
+                className={`block px-4 py-2 text-sm ${
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-400"
+                }`}>
+                Africa
+              </a>
+            )}
+          </MenuItem>
+          <MenuItem>
+            {({ active }) => (
+              <a
+                href="#"
+                className={`block px-4 py-2 text-sm ${
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-400"
+                }`}>
+                America
+              </a>
+            )}
+          </MenuItem>
+          <MenuItem>
+            {({ active }) => (
+              <a
+                href="#"
+                className={`block px-4 py-2 text-sm ${
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-400"
+                }`}>
+                Asia
+              </a>
+            )}
+          </MenuItem>
+          <MenuItem>
+            {({ active }) => (
+              <a
+                href="#"
+                className={`block px-4 py-2 text-sm ${
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-400"
+                }`}>
+                Europe
+              </a>
+            )}
+          </MenuItem>
+          <MenuItem>
+            {({ active }) => (
+              <a
+                href="#"
+                className={`block px-4 py-2 text-sm ${
+                  active ? "bg-gray-100 text-gray-900" : "text-gray-400"
+                }`}>
+                Ocenia
+              </a>
+            )}
+          </MenuItem>
+        </div>
+      </MenuItems>
+    </Menu>
+  );
+};
+
+export default FilterBox;
