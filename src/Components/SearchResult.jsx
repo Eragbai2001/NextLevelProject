@@ -17,7 +17,7 @@ const SearchResult = ({ results, selectedItem }) => {
     <div
       className={`${
         darkMode ? "bg-customary-lg text-black" : "bg-Navbar text-white"
-      } results-list shadow-xl rounded-lg`}>
+      } results-list shadow-xl rounded-lg lx:w-72`}>
       {results.map((result, index) => (
         <div
           key={index}

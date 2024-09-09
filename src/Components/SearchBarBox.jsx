@@ -75,7 +75,7 @@ const SearchBarBox = ({
     <div
       className={`${
         darkMode ? "bg-customary-lg text-black" : "bg-Navbar text-white"
-      } input-wrapper shadow-xl sm:w-80`}>
+      } input-wrapper shadow-xl sm:w-80  gl:mt-5`}>
       <Search id="search-icon" className="ml-6" />
       <input
         placeholder=" Search for a country..."

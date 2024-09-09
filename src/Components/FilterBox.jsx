@@ -4,7 +4,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const FilterBox = ({ darkMode }) => {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left mt-8">
       <div>
         <MenuButton
           className={`inline-flex w-56 justify-center gap-x-16 rounded-md px-0 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset  ${

@@ -4,12 +4,15 @@ import SearchBarBox from "../Components/SearchBarBox";
 import FilterBox from "../Components/FilterBox";
 import SearchResult from "../Components/SearchResult";
 import HashLoader from "react-spinners/HashLoader";
+import Country from "../Components/Country";
 
 const Body = () => {
   const { darkMode } = useContext(ThemeContext);
   const [results, setResults] = useState([]);
+  const [result, setResult] = useState([]);
   const [selectedItem, setSelectedItem] = useState(-1);
   const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log("Loading started");
@@ -17,6 +20,20 @@ const Body = () => {
       console.log("Loading finished");
       setLoading(false);
     }, 1000);
+  }, []);
+
+  useEffect(() => {
+    // Fetch the JSON data from the public folder
+    fetch("/data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setResult(data); // Set the data into the state
+        setIsLoading(false); // Stop loading when the data is fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
   }, []);
 
   if (loading) {
@@ -31,8 +48,8 @@ const Body = () => {
     <div
       className={`${
         darkMode ? "bg-customary-bg text-black" : "bg-custom-bg text-white"
-      } h-screen relative`}>
-      <div className="flex justify-between items-center h-28 px-10p mt-20">
+      } min-h-screen relative`}>
+      <div className="flex justify-between items-center h-28 px-10p mt-20 gl:flex-wrap ">
         <SearchBarBox
           setResults={setResults}
           setSelectedItem={setSelectedItem}
@@ -45,8 +62,9 @@ const Body = () => {
       <div className="absolute px-10p z-30">
         <SearchResult results={results} selectedItem={selectedItem} />
       </div>
-
-      <h1 className="text-3xl sm:text-xl px-10p">Where in the world?</h1>
+      <div>
+        {isLoading ? <h1>Loading...</h1> : <Country results={result} />}
+      </div>
     </div>
   );
 };
