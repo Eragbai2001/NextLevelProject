@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Country = ({ results = [] }) => {
+  const { filteredCountries } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const handleClick = (result) => {
@@ -22,8 +23,8 @@ const Country = ({ results = [] }) => {
 
   return (
     <div className="grid grid-cols-4 px-10p gap-14 min-h-screen lg:grid-cols-3 gl:grid-cols-2 gl:mt-20 dm:grid-cols-1">
-      {results && results.length > 0 ? (
-        results.map((result, index) => (
+      {filteredCountries && filteredCountries.length > 0 ? (
+        filteredCountries.map((result, index) => (
           <div
             key={index}
             onClick={() => handleClick(result)}
