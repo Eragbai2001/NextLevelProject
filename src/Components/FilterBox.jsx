@@ -28,7 +28,7 @@ const FilterBox = () => {
           darkMode ? "bg-customary-bg ring-black" : "bg-custom-bg text-white"
         }`}>
         <div className="py-1">
-          {["Filter by Region", "Africa", "Americas", "Asia", "Europe", "Oceania"].map(
+          {[ "Africa", "Americas", "Asia", "Europe", "Oceania"].map(
             (region) => (
               <MenuItem key={region}>
                 {({ active }) => (

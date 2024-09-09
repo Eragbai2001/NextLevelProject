@@ -6,7 +6,7 @@ const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [countriesData, setCountriesData] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
-  const [selectedRegion, setSelectedRegion] = useState("All");
+  const [selectedRegion, setSelectedRegion] = useState("Filter by ");
 
   useEffect(() => {
     fetch("/data.json")
@@ -20,7 +20,7 @@ const ThemeProvider = ({ children }) => {
 
   const handleFilter = (region) => {
     setSelectedRegion(region);
-    if (region === "All") {
+    if (region === "Filter by ") {
       setFilteredCountries(countriesData);
     } else {
       setFilteredCountries(
