@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import SearchBarBox from "../Components/SearchBarBox";
 import FilterBox from "../Components/FilterBox";
@@ -56,7 +56,7 @@ const Body = () => {
           results={results}
           selectedItem={selectedItem}
         />
-        <FilterBox darkMode={darkMode} />
+        <FilterBox />
       </div>
 
       <div className="absolute px-10p z-30">

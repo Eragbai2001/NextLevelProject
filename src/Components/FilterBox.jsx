@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../Components/Context/Themecontext";
 import { Menu, MenuButton, MenuItem } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -28,22 +28,23 @@ const FilterBox = () => {
           darkMode ? "bg-customary-bg ring-black" : "bg-custom-bg text-white"
         }`}>
         <div className="py-1">
-          {[ "Africa", "Americas", "Asia", "Europe", "Oceania"].map(
-            (region) => (
-              <MenuItem key={region}>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    onClick={() => handleFilter(region)}
-                    className={`block px-4 py-2 text-sm ${
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-400"
-                    }`}>
-                    {region}
-                  </a>
-                )}
-              </MenuItem>
-            )
-          )}
+          {["Africa", "Americas", "Asia", "Europe", "Oceania"].map((region) => (
+            <MenuItem key={region}>
+              {({ active }) => (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleFilter(region);
+                  }}
+                  className={`block w-full text-left px-4 py-2 text-sm ${
+                    active ? "bg-gray-100 text-gray-900" : "text-gray-400"
+                  }`}>
+                  {region}
+                </button>
+              )}
+            </MenuItem>
+          ))}
         </div>
       </Menu.Items>
     </Menu>
